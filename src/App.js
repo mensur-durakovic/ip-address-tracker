@@ -1,24 +1,39 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect } from "react";
+import appState from "./hooks/state";
+import IpAddressInput from "./components/IpAddressInput";
+import LocationMap from "./components/LocationMap";
+
+import BackgroundBlue from "./assets/pattern-bg.png";
 
 function App() {
+  const {
+    geoData,
+    handleGeoDataRequest,
+    ipAddress,
+    setIpAddress,
+    hasError,
+    isLoading,
+  } = appState();
+
+  useEffect(() => {
+    handleGeoDataRequest();
+  }, [ipAddress]);
+
+  console.log("JSON.stringify(geoData)", JSON.stringify(geoData));
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="container">
+      <IpAddressInput geoData={geoData} setIpAddress={setIpAddress} />
+      <div className="ip-bg">
+        <img src={BackgroundBlue} alt="blue background"></img>
+      </div>
+      {geoData && (
+        <LocationMap
+          lat={geoData.location.lat}
+          lng={geoData.location.lng}
+          zoom={16}
+        />
+      )}
     </div>
   );
 }

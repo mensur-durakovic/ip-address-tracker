@@ -1,0 +1,84 @@
+.ip {
+  position: absolute;
+  width: 100%;
+  height: fit-content;
+
+  &-bg {
+    width: 100vw;
+    height: 40vh;
+    position: relative;
+
+    @media (min-width: 768px) {
+      height: 30vh;
+    }
+
+    img {
+      position: absolute;
+      top: 0;
+      height: 100%;
+      width: 100%;
+    }
+  }
+
+  &-container {
+    position: relative;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 30px 20px 0 20px;
+    box-sizing: border-box;
+
+    @media (min-width: 768px) {
+      padding: 60px 20px 0 20px;
+    }
+  }
+
+  &-title {
+    font-weight: 400;
+    color: white;
+    margin-bottom: 30px;
+    text-align: center;
+    font-size: 26px;
+  }
+
+  &-input {
+    height: 50px;
+    width: 100%;
+    border-bottom-left-radius: 15px;
+    border-top-left-radius: 15px;
+    outline: 0;
+    border: 0;
+    padding: 10px 25px;
+    box-sizing: border-box;
+    font-family: "Rubik", sans-serif;
+    font-style: normal;
+    font-size: 18px;
+    margin-bottom: 20px;
+
+    &-group {
+      position: relative;
+      display: flex;
+    }
+
+    &-icon {
+      height: 50px;
+      width: 70px;
+      border-bottom-right-radius: 15px;
+      border-top-right-radius: 15px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: black;
+      cursor: pointer;
+
+      img {
+        height: 15px;
+        width: 15px;
+      }
+    }
+  }
+}
