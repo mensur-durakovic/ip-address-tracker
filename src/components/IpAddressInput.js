@@ -4,16 +4,23 @@ import LocationStats from "./LocationStats";
 
 export default function IpAddressInput(props) {
   const [userIpAddress, setUserIpAddress] = useState("");
-  const { geoData, setIpAddress } = props;
+  const { geoData, setIpAddress, hasError, loading } = props;
 
   return (
     <div className="ip">
       <div className="ip-container">
         <h1 className="ip-title">IP Address Tracker</h1>
-        <div className="ip-input-group">
+        <form className="ip-input-group">
           <input
+            name="ipAddress"
+            id="ipAddress"
+            title="ip address input"
+            aria-label="Ip Address Input"
             className="ip-input"
             type="text"
+            placeholder="Search for any IP address"
+            autoComplete="off"
+            disabled={loading}
             onChange={(e) => setUserIpAddress(e.target.value)}
           ></input>
           <div
@@ -22,8 +29,12 @@ export default function IpAddressInput(props) {
           >
             <img src={ArrowImage} alt="arrow"></img>
           </div>
-        </div>
-        <LocationStats geoData={geoData} />
+        </form>
+        <LocationStats
+          geoData={geoData}
+          loading={loading}
+          hasError={hasError}
+        />
       </div>
     </div>
   );

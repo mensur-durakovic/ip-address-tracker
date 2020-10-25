@@ -1,4 +1,5 @@
 import { useState } from "react";
+//import jsonData from "./example.json";
 import axios from "axios";
 
 const useAppState = () => {
@@ -20,7 +21,7 @@ const useAppState = () => {
       .catch(() => setError(true))
       .finally(() => setLoading(false));
 
-    /*     setGeoData(jsonData);
+    /* setGeoData(jsonData);
     setLoading(false);
     setError(false); */
   };

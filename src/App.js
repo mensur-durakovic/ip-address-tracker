@@ -23,7 +23,12 @@ function App() {
 
   return (
     <div className="container">
-      <IpAddressInput geoData={geoData} setIpAddress={setIpAddress} />
+      <IpAddressInput
+        geoData={geoData}
+        setIpAddress={setIpAddress}
+        hasError={hasError}
+        isLoading={isLoading}
+      />
       <div className="ip-bg">
         <img src={BackgroundBlue} alt="blue background"></img>
       </div>
