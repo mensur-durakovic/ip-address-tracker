@@ -10,7 +10,13 @@ export default function IpAddressInput(props) {
     <div className="ip">
       <div className="ip-container">
         <h1 className="ip-title">IP Address Tracker</h1>
-        <form className="ip-input-group">
+        <form
+          className="ip-input-group"
+          onSubmit={(e) => {
+            e.preventDefault();
+            setIpAddress(userIpAddress);
+          }}
+        >
           <input
             name="ipAddress"
             id="ipAddress"
@@ -23,12 +29,9 @@ export default function IpAddressInput(props) {
             disabled={loading}
             onChange={(e) => setUserIpAddress(e.target.value)}
           ></input>
-          <div
-            className="ip-input-icon"
-            onClick={() => setIpAddress(userIpAddress)}
-          >
+          <button type="submit" className="ip-input-icon">
             <img src={ArrowImage} alt="arrow"></img>
-          </div>
+          </button>
         </form>
         <LocationStats
           geoData={geoData}
